@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgt5b1toesfhm"]
+
+[ext_resource type="Texture2D" uid="uid://x3h8gankoac" path="res://icon.svg" id="1_h35tp"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_lv8ul"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7b26"]
+atlas = ExtResource("1_h35tp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7121n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7b26")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oa18v"]
+radius = 6.05849
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_lv8ul")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.267578, 0.261719)
+sprite_frames = SubResource("SpriteFrames_7121n")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.327652
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.72006, 1.17333)
+shape = SubResource("CircleShape2D_oa18v")
